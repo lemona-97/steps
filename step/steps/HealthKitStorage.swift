@@ -6,7 +6,7 @@
 //
 
 import HealthKit
-
+/// 건강 데이터 접근
 final class HealthKitStorage {
     static let shared = HealthKitStorage()
     
@@ -29,7 +29,7 @@ final class HealthKitStorage {
             }
         }
     }
-    
+    /// 건강데이터의 걸음수 가져오기
     func getStepCount(completion: @escaping (Double) -> Void) {
         guard let stepQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
             return

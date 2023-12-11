@@ -14,6 +14,7 @@ final class CoreMotionService {
     @Published var realtimeStep : Int = 0
     var cancelBag = Set<AnyCancellable>()
     private init() {
+        // 3초마다 걸음수 가져오기
         Timer.scheduledTimer(timeInterval: 3.0,
                              target: self,
                              selector: #selector(checkSteps),
@@ -31,6 +32,7 @@ final class CoreMotionService {
         print("UTCTime : ")
         print("todayStartDate : ", todayStartDate)
         print("nowDate :  ", nowDate)
+        /// 실시간 걸음수 데이터 가져오기
         pedoMeter.queryPedometerData(from: todayStartDate, to: nowDate) { data, error in
                     if let error {
                         print("CoreMotionService.queryPedometerData Error: \(error)")
